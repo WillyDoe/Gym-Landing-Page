@@ -1,0 +1,275 @@
+*{
+    box-sizing: border-box;
+} /* durch den *-Selektor werden alle Ellemente ausgewählt und deren box-sizing wird
+automatisch auf border-box gesetz, das bedeutet, dass margin und padding nicht zusätzlichen Platz einnehmen und das
+Element damit im Gesamten vergrößern, sondern sukzessive in den Content integriert werden */
+
+html{
+    
+    min-height: 100%;
+    font-size: 0.625em;
+}
+
+@media(min-width: 2750px){
+    html{
+        font-size: 0.695em;
+    }
+}
+
+
+@media(min-width: 3100px){
+    html{
+        font-size: 0.783em;
+    }
+}
+/*hier habe ich media querie verwendet, um die schriftgröße von elementen in abhängigkeit von der css-pixel anzahl im browserfenster zu verändern.
+wird rausgesoomt sind mehr css pixel im browserfenseter wird das reingezoomt entsprechend andersherum. Wird das Fenster durch dragging verkleinert sinkt die pixelzahl, wird es vergrößert seteigt sie*/
+
+
+
+/* durch das setzen einer min height für das Html-Element erhällt der Body beim setzen einer relativen height z.b in % oder vh
+eine Höhe. Definiert man keine Höhe für das html-element, bleibt die height des body solange 0 bis es mit Inhalten gefüllt wird.
+Bei der width ist das definieren eines wertes im html element nich notwendig, wenn man über body min-width:100% die breite definieren möchte*/
+
+  body {
+      
+      font-family: "Montserrat" , sans-serif;
+      min-height: 100%;
+        
+      margin: 0;
+      
+      padding: 0;
+
+      background-image:
+
+        
+          
+         linear-gradient(104deg, rgb(226, 29, 60) 50%, rgba(0, 0, 0, 0.5) 50%, transparent 55%),
+          
+          url(images/waves-cropped.svg),
+            
+          linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%),
+            
+          url(pexels-cesar-galeao-3289711-gray.jpg);
+/*hier wird das body-element in passend über margin und padding:0 in das html element integriert. 
+über background-image werdern sowohl farbverläufe über linear-gradient, als auch bilder über url eingefügt.
+die jeweiligen styles werden mit , voneinander getrennt. Die Reihenfolge entscheidet über die Lage auf der z-Achse
+Der erstgenannte Style liegt am weitesten oben. */
+        
+      background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+      /* background-repeat: no-repeat; sorgt dafür, dass Hintergrundbilder, welche von CSS
+      automatisch wiederholt werden,nicht wiederholt werden. Per Default werden Bilder solange ihrem Ausgangsformat entsprechend wiederholt
+      wiederholt, bis sie das gesamte Element einnehmen. Hat keinen Einfluss auf die linear-gradient(),*/
+       
+      background-position:50% 50%,100% 100% ,100% 100%, 100% 50%;
+      /*Über background-position: werden die Hintergrundelemente positioniert. Per Default sind alle Elemente bei 0% 0% angeordnet,
+      was der linken oberen Bildschirmecke entspricht. Der erste Wert definiert den x-Wert der zweite den y-Wert.
+      Hat keinen Einfluss auf die linear-gradient(),*/
+        
+      background-color: rgb(100, 100, 100);
+       
+      background-size:  100% 100%, auto 50%, 100% 100%, calc(50% + 20vh) auto;
+      /*Über background-size:; wird die Größe der Elemente definiert. Der Wert Auto entspricht der ursprünglichen
+      Größe. Hat keinen Einfluss auf die linear-gradient(),. Wert 1 definiert die width, Wert zwei die height.*/
+      
+      background-attachment: fixed, fixed, fixed, fixed; 
+    /*background-attachment: fixed; sorgt dafür das alle Background-Elemente ihre Position und Größe beim Scrollen und Zommen beibehalten, weil
+    sie relativ zu viewport gefixed sind*/ 
+        
+}  
+
+.page-container{
+    display:flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.page{
+    display: flex;
+    flex: 1 0 auto;
+    
+}
+ /*hier wird ein Flexcontainer definiert, der die min-height: 100vh; definiert bekommt. Das bedeutet, dass
+ das Element immer 100% der vom jeweiligen Engerät zur Verfügung gestellten Höhe benutz, um das Element anzuzeigen*/
+@media(max-width: 1100px){
+    html{
+        font-size: 0.35em;
+    }
+    .page{
+        flex-direction: column;
+    }
+    body{
+        background-image: url(images/waves-white-cropped.svg);
+        background-position: 100% 100%;
+        background-repeat: no-repeat;
+        background-size: 45vw auto;
+        background-color:rgb(226, 29, 60)
+    }
+
+    .countdown-h, .countdown-p{
+        position: relative;
+        bottom: 15rem;
+    }
+
+    .logo{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1rem;
+    }
+
+    .main-heading{
+        text-align: center;
+        
+       }
+
+    .main-offer{
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    
+    
+    
+}
+
+@media (max-height: 700px){
+    .countdown-h, .countdown-p{
+        position: static;
+    }
+}
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+/*hier wird flex: 1; verwendet um zu definieren, dass alle Flexelemente den gleichen Platz einnehmen und den Container voll ausfüllen.
+Über display: flex; wird aus dem Flex-Item außerdem ein Flexcontainer. Mit flex-direction: coloumn; legen wir fest, dass
+die neuen Items vertikal angeordnet werden. Mit justify-content: space-between; werden die Abstände und die Ausrichtung der Items im Flexcontainer
+angepasst*/
+
+.countdown{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+}
+.logo{
+    
+    width: 57.5rem;
+    
+   /* margin-top: 15px;
+    margin-left: 15px; */
+}
+
+
+.main-offer{
+    margin: 7.5rem 1.5rem 10rem 1.5rem;
+    align-self: center;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/*Über align-self:; kann man die Positione eines einzelnen Flexitems oder Griditems anpassen, ohne die Position der anderen zu verändern,
+btz, werden die Items aus dem dem Grid oder Flexlayout gelöst*/
+
+.main-heading{
+    
+    /*margin-top: 0px;
+    margin-bottom: 0px;*/
+    font-style: italic;
+    font-size: 4.5rem;
+    font-weight: normal;
+    color: white;
+    letter-spacing: 0.15em;
+    
+}
+
+.main-heading > strong{
+    text-transform: uppercase;
+}
+
+
+
+.main-offer-price{
+    display: block;
+    margin-top: 5rem;
+    font-size: 19rem;
+}
+
+/*Über display: block; wird das semantsiche inline-element strong, in ein blockelement ungewandelt.*/
+
+/*
+blockelement: ganze breite
+inlineelement: nur content - keine width, height kann definiert werden, top/bottom margin und padding werden nicht beachtet
+inline-block: nur content - allerdings kann widt und height gesetz werden, top/bottoms margins und paddings werden beachtet.*/
+
+.button{
+    width: 40rem;
+    height: 9rem;;
+    display: inline-block;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    text-align: center ;
+    border-radius: 99999px;
+    
+    padding-top: 2.5rem;
+    font-weight: 400;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    box-shadow: 0.2rem 0.2rem 1.8rem 0.4rem rgba(0, 0, 0, 0.5);
+    
+
+    
+    
+    
+        
+}
+
+.button:hover{
+    background-color: rgb(70, 70, 70);
+    box-shadow: 0.2rem 0.2rem 1.8rem 0.4rem rgba(70, 70, 70, 0.5);
+}
+
+.policy{  
+    font-size: 1.7rem;
+    font-weight:500;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    
+    
+/*über das position:; property wird die position von Elementen angepasst. Per Default ist Position auf static gesetzt.
+Das bedeutet, dass element entsprechend des document-flows angezeigt wird.  Über das attribut relative wird das
+Element relativ zu seiner vorherigen Position ausgerichtet indem man werte für top, right, bottom, left hinzufügt.
+Ansonsten verhällt sich relative, wie static. Nimmt das Property den Wert absolut an, so fällt das 
+Element aus dem Dokumenflow und die anderen element ignorien es komplett, es wird dann relativ zum nächstgelegenden parent mit position:
+relative, absolute, fixed, oder sticky; ausgerichtet. Sollte es einen solchen parent nicht geben wird das html element als parent verwendet*/        
+    
+    
+}
+
+
+
+.countdown-h{
+    margin: 0;
+    color: white;
+    text-align: center;
+    letter-spacing: 0.15em;
+    font-weight: normal;
+    font-size: 6.5rem;
+    text-transform: uppercase;
+}
+
+.countdown-p{
+    margin: 0;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 9rem;
+}
+
+/*absolute und relative Längeneinheiten in CSS. Es ist wichtig zu beachten, dass Pixel eine relative Größe darstellen, weile die tatsächlich angezeigte größe von gerät zu gerät unterschiedet.
+Allerdings sind sie auf einem einzigen Gerät eine absolute Größe. Über die Device-Pixel-Ratio lässt sich das Verhältnis von Gerätepixeln zu CSS-Pixeln bestimmen.*/
